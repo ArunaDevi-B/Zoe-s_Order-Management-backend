@@ -19,7 +19,19 @@ app.get('/fruits', async (req, res) => {
         console.log("error in index", error);
     }
 });
-
-app.listen(9000, ()=>{
+app.listen(process.env.PORT || 3000, ()=>{
     console.log('Server is successfully running at port: 9000');
 })
+
+process.on('beforeExit', code => {
+    // Can make asynchronous calls
+    setTimeout(() => {
+      console.log(`Process will exit with code: ${code}`)
+      process.exit(code)
+    }, 100)
+  })
+  
+  process.on('exit', code => {
+    // Only synchronous calls
+    console.log(`Process exited with code: ${code}`)
+  })
