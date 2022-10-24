@@ -4,7 +4,17 @@ const app = express();
 
 app.get('/', async (req, res) => {
     try{
+        console.log('hi its a route');
         res.send("hello");
+    } catch (error) {
+        console.log("error in index", error);
+    }
+});
+
+app.get('/fruits', async (req, res) => {
+    try{
+        console.log('hi its a route');
+        res.send("apple");
     } catch (error) {
         console.log("error in index", error);
     }
